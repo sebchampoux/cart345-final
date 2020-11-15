@@ -1,8 +1,58 @@
 import React, { Component } from 'react';
 import './App.css';
 import PopUp from './PopUp';
+import TypeBox from './TypeBox';
+import AsciiView from './views/AsciiView';
+import CeasarView from './views/CeasarView';
+import MorseView from './views/MorseView';
+import Sha1View from './views/Sha1View';
+import Ceasar from './details/Ceasar';
+import Morse from './details/Morse';
+import Ascii from './details/ASCII';
+import SHA1Hashing from './details/SHA1Hashing';
+import asciiImg from './images/ascii.png';
+import ceasarImg from './images/ceasar.jpg';
+import morseImg from './images/morse.png';
+import sha1Img from './images/sha1.png';
 
 export default class App extends Component {
+  constructor(p) {
+    super(p);
+    this.state = {
+      currentText: '',
+      popup: null,
+    };
+    this.popupContents = {
+      ceasar: {
+        title: 'Ceasar\'s Shift Cypher',
+        content: <Ceasar />,
+        image: ceasarImg,
+      },
+      morse: {
+        title: 'Morse Encoding',
+        content: <Morse />,
+        image: morseImg,
+      },
+      ascii: {
+        title: 'ASCII Encoding',
+        content: <Ascii />,
+        image: asciiImg,
+      },
+      sha1: {
+        title: 'SHA1 Hashing',
+        content: <SHA1Hashing />,
+        image: sha1Img,
+      },
+    };
+  }
+
+  openPopUp(contentName) {
+    const popup = {
+      ...this.popupContents[contentName],
+    };
+    this.setState({ popup });
+  } 
+
   render() {
     return (
       <div className="app">
@@ -12,18 +62,63 @@ export default class App extends Component {
               <textarea
                 className="input-area"
                 placeholder="Enter some text here..."
+                onChange={e => this.setState({ currentText: e.target.value })}
+              >{this.state.currentText}</textarea>
+              <p>Here's how this message would be represented in the following codes or cyphers.  Click on a box to learn more!</p>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-6">
+              <TypeBox
+                title="Ceasar's shift cypher"
+                onClick={() => this.openPopUp('ceasar')}
               >
-              </textarea>
+                <CeasarView
+                  message={this.state.currentText}
+                />
+              </TypeBox>
+            </div>
+            <div className="col-6">
+              <TypeBox
+                title="Morse Code encoding"
+                onClick={() => this.openPopUp('morse')}
+              >
+                <MorseView
+                  message={this.state.currentText}
+                />
+              </TypeBox>
+            </div>
+            <div className="col-6">
+              <TypeBox
+                title="ASCII encoding"
+                onClick={() => this.openPopUp('ascii')}
+              >
+                <AsciiView
+                  message={this.state.currentText}
+                />
+              </TypeBox>
+            </div>
+            <div className="col-6">
+              <TypeBox
+                title="SHA1 hashing"
+                onClick={() => this.openPopUp('sha1')}
+              >
+                <Sha1View
+                  message={this.state.currentText}
+                />
+              </TypeBox>
             </div>
           </div>
         </div>
-        <PopUp
-          imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Behemoth_roller_coaster_near_bend.jpg/512px-Behemoth_roller_coaster_near_bend.jpg"
-          title="ASCII Encoding"
-        >
-          <p>Tumblr brunch leggings knausgaard celiac, la croix vaporware kombucha single-origin coffee. Viral chia butcher echo park pork belly, shaman dreamcatcher kale chips chillwave. Kombucha locavore waistcoat, try-hard edison bulb banh mi hoodie kitsch fanny pack plaid kogi. Kinfolk pok pok la croix roof party, gastropub air plant bitters everyday carry fanny pack portland. Authentic four dollar toast single-origin coffee kogi austin polaroid seitan, pitchfork lo-fi.</p>
-          <p>Af flannel wayfarers, williamsburg neutra prism hexagon offal subway tile banjo letterpress. Blog gentrify migas glossier authentic. XOXO chartreuse iPhone, glossier copper mug palo santo tousled. Letterpress heirloom adaptogen banjo mustache normcore. Disrupt subway tile asymmetrical offal whatever meh. Aesthetic tofu distillery 3 wolf moon la croix single-origin coffee flexitarian pork belly thundercats.</p>
-        </PopUp>
+        {this.state.popup &&
+          <PopUp
+            imageSrc={this.state.popup.image}
+            title={this.state.popup.title}
+            onCloseClick={e => this.setState({ popup: null })}
+          >
+            {this.state.popup.content}
+          </PopUp>
+        }
       </div>
     );
   }
