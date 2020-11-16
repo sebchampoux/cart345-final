@@ -38,6 +38,7 @@ export default class CeasarView extends Component {
 				<div className="shift-ctrl">
 				Shift by
 				<input
+					onClick={e => e.stopPropagation()}
 					type="number"
 					min="0"
 					max="25"

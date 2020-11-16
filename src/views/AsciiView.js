@@ -6,7 +6,7 @@ export default class AsciiView extends Component {
 		let encodedMessage = '';
 		for(let i = 0; i < message.length; i++) {
 			const char = message.charAt(i).toLowerCase();
-			if (char == ' ') {
+			if (char === ' ') {
 				encodedMessage += '  ';
 				continue;
 			}
