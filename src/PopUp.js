@@ -27,7 +27,7 @@ export default class PopUp extends Component {
 		tl.from(this.img.current, {
 			duration: 0.4,
 			scaleY: 0,
-		}, '-=0.2');
+		}, '-=0.1');
 		tl.from([
 			this.title.current,
 			this.text.current,
@@ -53,13 +53,14 @@ export default class PopUp extends Component {
 			duration: 0.3,
 			stagger: 0.15,
 		});
+		tl.addLabel('pop-up-out', '-=0.2');
 		tl.set(this.popUp.current, {
 			transformOrigin: '100% 0',
-		});
+		}, 'pop-up-out');
 		tl.to(this.popUp.current, {
 			duration: 0.5,
 			scaleX: 0,
-		});
+		}, 'pop-up-out');
 	}
 
 	render() {

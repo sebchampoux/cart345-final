@@ -14,6 +14,7 @@ import asciiImg from './images/ascii.png';
 import ceasarImg from './images/ceasar.jpg';
 import morseImg from './images/morse.png';
 import sha1Img from './images/sha1.png';
+import infoCircle from './images/info-circle-solid.svg';
 
 export default class App extends Component {
   constructor(p) {
@@ -58,18 +59,26 @@ export default class App extends Component {
       <div className="app">
         <div className="container">
           <div className="row">
+            <div className="col-12 app__title-wrapper">
+              <h1 class="app__title">Codes of the ages</h1>
+              <h1 class="app__subtitle">Discover some of the world's most famous codes - and try them yourself!</h1>
+            </div>
             <div className="col-12">
               <textarea
                 className="input-area"
-                placeholder="Enter some text here..."
+                placeholder="Tell me the bottom of your mind..."
                 onChange={e => this.setState({ currentText: e.target.value })}
               >{this.state.currentText}</textarea>
-              <p>Here's how this message would be represented in the following codes or cyphers.  Click on a box to learn more!</p>
             </div>
           </div>
           <div className="row">
+            <div className="col-12 advice">
+              <img src={infoCircle} alt="" className="advice__icon" />
+              For more info on each code/cypher, click on the boxes!
+            </div>
             <div className="col-6">
               <TypeBox
+                className="typebox--ceasar"
                 title="Ceasar's shift cypher"
                 onClick={() => this.openPopUp('ceasar')}
               >
@@ -80,6 +89,7 @@ export default class App extends Component {
             </div>
             <div className="col-6">
               <TypeBox
+                className="typebox--morse"
                 title="Morse Code encoding"
                 onClick={() => this.openPopUp('morse')}
               >
@@ -90,6 +100,7 @@ export default class App extends Component {
             </div>
             <div className="col-6">
               <TypeBox
+                className="typebox--terminal"
                 title="ASCII encoding"
                 onClick={() => this.openPopUp('ascii')}
               >
@@ -100,6 +111,7 @@ export default class App extends Component {
             </div>
             <div className="col-6">
               <TypeBox
+                className="typebox--terminal"
                 title="SHA1 hashing"
                 onClick={() => this.openPopUp('sha1')}
               >
