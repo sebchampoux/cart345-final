@@ -1,0 +1,9 @@
+Sources for the images used in this project:
+
+Felicisimo, Angel M. “Tusculum Portrait” Wikimedia Commons. Last modified May 1, 2016. https://commons.wikimedia.org/wiki/File:Retrato_de_Julio_César_(26724093101)_(cropped).jpg
+
+Snodgrass, Rhey T. & Camp, Victor F. “Chart of the Morse Code letters and numerals” Wikimedia Commons. Last modified April 19, 2008. https://commons.wikimedia.org/wiki/File:International_Morse_Code.svg
+
+Unknown author. “USASCII Code Chart” Wikimedia Commons. Last modified February, 1972. https://commons.wikimedia.org/wiki/File:USASCII_code_chart.png
+
+Crypto, Matt. “SHA-1” Wikimedia Commons. Last modified January 21, 2007. https://commons.wikimedia.org/wiki/File:SHA-1.svg
