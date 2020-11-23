@@ -16,9 +16,13 @@ export default class PopUp extends Component {
 		const tl = gsap.timeline();
 		tl.set([
 			this.popUp.current,
-			this.img.current,
 		], {
 			transformOrigin: '0 0',
+		});
+		tl.set([
+			this.img.current,
+		], {
+			transformOrigin: '0 50%',
 		});
 		tl.from(this.popUp.current, {
 			duration: 0.4,
